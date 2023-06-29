@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, interval, tap } from 'rxjs';
 
 @Component({
   selector: 'app-uncommon-pages',
@@ -32,4 +33,28 @@ export class UncommonPagesComponent {
   atenderCliente():void {
     this.clientes.shift()
   }
+
+  //key value pipe
+
+  public person = {
+    nombre: "Nicolás",
+    edad: 23,
+    dirección: "Bogotá"
+  }
+
+
+  //async pipe
+
+  //lo que crea el observable es el interval
+  //el observable retorna un tipo numero, pero con operadores lo puedo transformar(como con map)
+  public myObservableTimer:Observable<number> = interval(2000)
+  .pipe(
+    tap(value => console.log(value))
+  )
+
+  public promiseValue:Promise<string> = new Promise( (resolve, reject) => {
+    setTimeout(() => {
+      resolve('Tenemos data en la promesa')
+    }, 2500);
+  })
 }

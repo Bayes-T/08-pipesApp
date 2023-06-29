@@ -59,24 +59,29 @@
             <div class="col-12 md:col-6">
                 <p-fieldset legend="JSON Pipe" [toggleable]="true" pRipple>
                     <p class="m-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        {{person | json}}
                     </p>
                 </p-fieldset>
                 </div>
 
                 <div class="col-12 md:col-6">
                     <p-fieldset legend="Key Value Pipe" [toggleable]="true" pRipple>
-                        <p class="m-0">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        </p>
+                        <ol>
+                            <li *ngFor="let item of person | keyvalue">
+                                {{item.key | titlecase}} :
+                                {{item.value}}
+                            </li>
+                        </ol>
                     </p-fieldset>
                     </div>
                 
                     <div class="col-12 md:col-6">
                         <p-fieldset legend="Async Pipe" [toggleable]="true" pRipple>
-                            <p class="m-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            </p>
+                            <!--hace que se emitan los valores mientras se está en la página en la que está el observable, no tengo necesidad de desuscribirme es decir limpiar-->
+                            {{myObservableTimer | async}}
+
+                            <!--Ojo, las promesas no se pueden cancelar, así esté en otro componente me va a cumplir esta promesa. Normalmente no marca error, pero es una perdida de eficiencia. -->
+                            {{promiseValue | async}}
                         </p-fieldset>
                         </div>    
 </div>
