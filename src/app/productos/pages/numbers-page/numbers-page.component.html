@@ -1,0 +1,45 @@
+<p-panel header="Pipes con números" class="p-4">
+
+    <p>Pipes relacionados a los números, incluidos en common module</p>
+</p-panel>
+
+<div class="grid mt-2">
+
+    <div class="col-12 md:col-4">
+        <p-card header="Número sin pipes">
+            <ol>
+                <li>{{totalSells}} | number:'1.2-2' </li>
+                <li>{{totalSells}} | currency: 'COP$' </li>
+                <li>{{totalSells}} | currency: 'HNL' : 'symbol-narrow' : '1.4-4' </li>
+                <!--El symbol narrow reemplaza al primer argumento si se lo coloca, ya puede ser mas completo ($L, en lugar de L, el vlaor del symbolnarrow es libre)-->
+             
+        </ol>
+        </p-card>
+    </div>
+    <div class="col-12 md:col-4">        
+        <p-card header="Número con pipes">
+
+            <ol>
+                <li>
+                    <!--2-2 es de 2 a 2 digitos de decimales, PUEDE SER DE 0 A 2, DE 6 A 6 ETC-->
+                    {{totalSells | number:'1.2-2'}} 
+                </li>
+                <li>{{totalSells | currency: 'COP$ '}}  </li>
+                <li>{{totalSells | currency: 'HNL' : 'symbol' : '1.4-4'}}  </li>
+            </ol>
+        </p-card>
+        </div>
+
+        <div class="col-12 md:col-4">        
+            <p-card header="Porcentajes">
+    
+                <div>
+                {{percent | percent}} - percent 
+            </div>
+
+            <div>
+                {{percent | percent : '1.2-2'}} - percent : '1.2-2'
+            </div>
+            </p-card>
+        </div>
+</div>
